@@ -1,4 +1,5 @@
 using API.Data;
+using API.Middleware;
 using Microsoft.EntityFrameworkCore;
 
 internal class Program
@@ -22,6 +23,8 @@ internal class Program
         builder.Services.AddCors();
 
         var app = builder.Build();
+
+        app.UseMiddleware<ExceptionMiddleware>();
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
