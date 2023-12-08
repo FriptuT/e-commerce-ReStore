@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Product } from "../../app/models/product";
 import agent from "../../app/api/agent";
 import NotFound from "../../app/errors/NotFound";
+import LoadingComponent from "../../app/layout/LoadingComponent";
 
 export default function ProductDetails(){
 
@@ -19,8 +20,10 @@ export default function ProductDetails(){
         
     }, [id])
 
+
+
     if (loading) {
-        return <h3>Loading...</h3>
+        return <LoadingComponent message='Loading product ...' />
     }
 
     if (!product) {
