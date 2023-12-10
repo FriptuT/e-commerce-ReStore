@@ -34,6 +34,6 @@ namespace API.Entities
             
             if(item.Quantity == 0) Items.Remove(item);
 
-        }
+        } 
     }
 }
