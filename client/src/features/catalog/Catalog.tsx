@@ -3,6 +3,7 @@ import LoadingComponent from "../../app/layout/LoadingComponent";
 import { Product } from "../../app/models/product";
 import ProductList from "./ProductList";
 import { useState, useEffect } from "react";
+import React from "react";
 
 export default function Catalog() {
   const [products, setProducts] = useState<Product[]>([]);
