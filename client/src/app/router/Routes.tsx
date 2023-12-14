@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import App from "../layout/App";
 import HomePage from "../../features/home/HomePage";
 import Catalog from "../../features/catalog/Catalog";

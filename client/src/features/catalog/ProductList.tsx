@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Grid } from "@mui/material";
 import { Product } from "../../app/models/product";
 import ProductCard from "./ProductCard";
