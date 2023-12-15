@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Container, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import Header from "./Header";
 import { useState } from "react";

@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/react-in-jsx-scope */
 import { ShoppingCart } from "@mui/icons-material";
 import {
   AppBar,
@@ -9,6 +11,7 @@ import {
   Badge,
   Box,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 const midLinks = [
@@ -70,7 +73,7 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
         </ul>
 
         <Box display='flex' alignItems='center'>
-          <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
+          <IconButton component={Link} to='/basket' size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
             <Badge badgeContent="3" color="secondary">
               <ShoppingCart />
             </Badge>

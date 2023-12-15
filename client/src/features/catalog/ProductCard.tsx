@@ -14,7 +14,9 @@ import { Product } from "../../app/models/product";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import agent from "../../app/api/agent";
-import { LoadingButton } from "@mui/lab";
+// import  LoadingButton  from "@mui/lab/LoadingButton";
+import React from "react";
+import {LoadingButton} from "@material-ui/lab";
 
 
 interface Props {
@@ -59,7 +61,7 @@ export default function ProductCard({ product }: Props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">ADD TO CART</Button>
+        <LoadingButton loading={loading} onClick={() => handleAddItem(product.id) } size="small">ADD TO CART</LoadingButton>
         <Button component={Link} to={`/catalog/${product.id}`} size="small">VIEW</Button>
       </CardActions>
     </Card>
