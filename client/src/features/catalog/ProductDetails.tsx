@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
