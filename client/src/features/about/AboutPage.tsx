@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Alert, AlertTitle, Button, ButtonGroup, Container, List, ListItem, ListItemText, Typography } from "@mui/material";
 import agent from "../../app/api/agent";
 import { useState } from "react";
@@ -13,8 +14,8 @@ export default function AboutPage() {
 
   return (
     <Container>
-      <Typography gutterBottom variant="h2">
-        Errors for testing purposes
+      <Typography gutterBottom variant="h2" align='center'>
+        Type of errors
       </Typography>
       <ButtonGroup fullWidth>
         <Button

@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Button, Container, Divider, Paper, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
