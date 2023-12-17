@@ -1,9 +1,23 @@
-import { Typography } from "@mui/material";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/react-in-jsx-scope */
+import { Button, ButtonGroup, Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { CounterState, decrement, increment } from "./counterReducer";
 
-export default function ContactPage(){
-    return (
-        <Typography variant="h2">
-            Contact Page
-        </Typography>
-    )
+export default function ContactPage() {
+  const dispatch = useDispatch();
+  const data = useSelector((state: CounterState) => state.data);
+  const title = useSelector((state: CounterState) => state.title);
+
+  return (
+    <>
+      <Typography variant="h2">{title}</Typography>
+      <Typography variant="h5">The data is: {data}</Typography>
+      <ButtonGroup>
+        <Button onClick={() => dispatch(decrement())} variant="contained" color="error">-</Button>
+        <Button onClick={() => dispatch(increment())} variant="contained" color="primary">+</Button>
+        <Button onClick={() => dispatch(increment(5))} variant="contained" color="secondary">+5</Button>
+      </ButtonGroup>
+    </>
+  );
 }
