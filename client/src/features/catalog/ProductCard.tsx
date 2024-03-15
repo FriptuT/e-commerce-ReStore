@@ -14,12 +14,10 @@ import { Product } from "../../app/models/product";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import agent from "../../app/api/agent";
-import React from "react";
 import {LoadingButton} from "@material-ui/lab";
-import { useStoreContext } from "../../app/context/StoreContext";
 import { currencyFormat } from "../../app/util/util";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
-import { setBasket } from "../basket/basketSlice";
+import { addBasketItemAsync, setBasket } from "../basket/basketSlice";
 
 
 interface Props {
@@ -28,16 +26,19 @@ interface Props {
 
 export default function ProductCard({ product }: Props) {
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  const {status} = useAppSelector(state => state.basket); 
   const dispatch = useAppDispatch();
 
-  function handleAddItem(productId: number){
-    setLoading(true);
-    agent.Basket.addItem(productId)
-        .catch(error => console.log(error))
-        .then(basket => dispatch(setBasket(basket)))
-        .finally(() => setLoading(false));
-  }
+
+
+  // function handleAddItem(productId: number){
+  //   setLoading(true);
+  //   agent.Basket.addItem(productId)
+  //       .catch(error => console.log(error))
+  //       .then(basket => dispatch(setBasket(basket)))
+  //       .finally(() => setLoading(false));
+  // }
 
   return (
     <Card>
@@ -66,7 +67,7 @@ export default function ProductCard({ product }: Props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <LoadingButton loading={loading} onClick={() => handleAddItem(product.id) } size="small">ADD TO CART</LoadingButton>
+        <LoadingButton loading={status.includes('pendingAddItem' + product.id)} onClick={() => dispatch(addBasketItemAsync({productId: product.id})) } size="small">ADD TO CART</LoadingButton>
         <Button component={Link} to={`/catalog/${product.id}`} size="small">VIEW</Button>
       </CardActions>
     </Card>

@@ -23,7 +23,7 @@ import { LoadingButton } from "@material-ui/lab";
 import BasketSummary from "./BasketSummary";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
-import { removeItem, setBasket } from "./basketSlice";
+import { setBasket } from "./basketSlice";
 
 export default function BasketPage() {
   const dispatch = useAppDispatch();
