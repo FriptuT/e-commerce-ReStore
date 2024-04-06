@@ -3,19 +3,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Product } from "../../app/models/product";
 import agent from "../../app/api/agent";
 import NotFound from "../../app/errors/NotFound";
 import LoadingComponent from "../../app/layout/LoadingComponent";
-import { useStoreContext } from "../../app/context/StoreContext";
 import {LoadingButton} from "@material-ui/lab";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
-import { addBasketItemAsync, removeBasketItemAsync, setBasket } from "../basket/basketSlice";
+import { addBasketItemAsync, removeBasketItemAsync } from "../basket/basketSlice";
 
 export default function ProductDetails(){
-    const {basket} = useAppSelector(state => state.basket);
+    const {basket, status} = useAppSelector(state => state.basket);
     const dispatch = useAppDispatch();
     const {id} = useParams<{id: string}>();
     const [product, setProduct] = useState<Product>();
@@ -53,14 +52,7 @@ export default function ProductDetails(){
         {
             const updatedQuantity = item.quantity - quantity;
             dispatch(removeBasketItemAsync({productId: product?.id!, quantity: updatedQuantity}))
-            // AM RAMAS LA "USING ASYNC FUNCTIONS IN REDUX PART 3 "  MINUTE 8:05 / 14:54
-            // AM RAMAS LA "USING ASYNC FUNCTIONS IN REDUX PART 3 "  MINUTE 8:05 / 14:54
-            // AM RAMAS LA "USING ASYNC FUNCTIONS IN REDUX PART 3 "  MINUTE 8:05 / 14:54
-            // AM RAMAS LA "USING ASYNC FUNCTIONS IN REDUX PART 3 "  MINUTE 8:05 / 14:54
-            // AM RAMAS LA "USING ASYNC FUNCTIONS IN REDUX PART 3 "  MINUTE 8:05 / 14:54
-            // AM RAMAS LA "USING ASYNC FUNCTIONS IN REDUX PART 3 "  MINUTE 8:05 / 14:54
-            // AM RAMAS LA "USING ASYNC FUNCTIONS IN REDUX PART 3 "  MINUTE 8:05 / 14:54
-            // AM RAMAS LA "USING ASYNC FUNCTIONS IN REDUX PART 3 "  MINUTE 8:05 / 14:54
+            
         }
   }
 

@@ -12,10 +12,24 @@ import { router } from "./app/router/Routes";
 import { StoreProvider } from "./app/context/StoreContext";
 import { Provider } from "react-redux";
 import { store } from "./app/store/configureStore";
+import { fetchProductsAsync } from "./features/catalog/catalogSlice";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
+
+store.dispatch(fetchProductsAsync()); 
+
+// AM RAMAS LA :
+//        97. Using entity adapter selectors 0:00 / 5:29
+//        97. Using entity adapter selectors 0:00 / 5:29
+//        97. Using entity adapter selectors 0:00 / 5:29
+//        97. Using entity adapter selectors 0:00 / 5:29
+//        97. Using entity adapter selectors 0:00 / 5:29
+//        97. Using entity adapter selectors 0:00 / 5:29
+//        97. Using entity adapter selectors 0:00 / 5:29
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
