@@ -5,34 +5,27 @@
 import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Product } from "../../app/models/product";
-import agent from "../../app/api/agent";
 import NotFound from "../../app/errors/NotFound";
 import LoadingComponent from "../../app/layout/LoadingComponent";
 import {LoadingButton} from "@material-ui/lab";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { addBasketItemAsync, removeBasketItemAsync } from "../basket/basketSlice";
+import { fetchProductAsync, productSelectors } from "./catalogSlice";
 
 export default function ProductDetails(){
     const {basket, status} = useAppSelector(state => state.basket);
     const dispatch = useAppDispatch();
     const {id} = useParams<{id: string}>();
-    const [product, setProduct] = useState<Product>();
-    const [loading, setLoading] = useState(true);
+    const product = useAppSelector(state => productSelectors.selectById(state, parseInt(id!)));
+    const {status: productStatus} = useAppSelector(state => state.catalog);
     const [quantity, setQuantity] = useState(0);
-    // const [submitting, setSubmitting] = useState(false);
     const item = basket?.items.find(i => i.productId == product?.id);
 
     useEffect(() => {
-        if(item){
-            setQuantity(item.quantity);
-        }
-       id && agent.Catalog.details(parseInt(id))
-        .then(response => setProduct(response))
-        .catch(error => console.log(error))
-        .finally(() => setLoading(false));
+        if (item) setQuantity(item.quantity);
+       if (!product && id) dispatch(fetchProductAsync(parseInt(id)));
         
-    }, [id, item])
+    }, [id, item ,dispatch, product])
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement>){
         if(parseInt(event.currentTarget.value) > 0){
@@ -58,7 +51,7 @@ export default function ProductDetails(){
 
 
 
-    if (loading) {
+    if (productStatus.includes('pending')) {
         return <LoadingComponent message='Loading product ...' />
     }
 
