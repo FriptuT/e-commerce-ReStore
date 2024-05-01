@@ -17,16 +17,6 @@ const root = ReactDOM.createRoot(
 );
 
 
-
-// AM RAMAS LA :
-//        97. Using entity adapter selectors 0:00 / 5:29
-//        97. Using entity adapter selectors 0:00 / 5:29
-//        97. Using entity adapter selectors 0:00 / 5:29
-//        97. Using entity adapter selectors 0:00 / 5:29
-//        97. Using entity adapter selectors 0:00 / 5:29
-//        97. Using entity adapter selectors 0:00 / 5:29
-//        97. Using entity adapter selectors 0:00 / 5:29
-
 root.render(
   <React.StrictMode>
     <Provider store={store}>
